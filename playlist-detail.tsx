@@ -3,19 +3,8 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import {
-  Play,
-  Shuffle,
-  Plus,
-  Download,
-  MoreHorizontal,
-  Search,
-  Clock,
-  ArrowLeft,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react"
-import { useState } from "react"
+import { Play, Shuffle, Plus, Download, MoreHorizontal, Clock, ArrowLeft, ChevronDown, ChevronUp } from "lucide-react"
+import { useState, useEffect } from "react"
 
 interface PlaylistDetailProps {
   playlistId: string
@@ -95,101 +84,111 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
           tracks: [
             {
               id: 1,
-              title: "Senior Quantum Developer",
-              artist: "Interdimensional Corp",
+              title: "Interdimensional Corp",
+              artist: "Senior Quantum Developer",
               album: "Time Traveler",
               duration: "12:00",
               dateRange: "Jun 2023 - May 2024",
+              location: "San Francisco, CA",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
             {
               id: 2,
-              title: "Blockchain Wizard",
-              artist: "CryptoMagic Inc",
+              title: "CryptoMagic Inc",
+              artist: "Blockchain Wizard",
               album: "Spell Caster",
               duration: "8:30",
               dateRange: "Jan 2023 - Dec 2023",
+              location: "Austin, TX",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
             {
               id: 3,
-              title: "AI Whisperer",
-              artist: "Robot Friends LLC",
+              title: "Robot Friends LLC",
+              artist: "AI Whisperer",
               album: "Machine Translator",
               duration: "6:45",
               dateRange: "Sep 2022 - Mar 2023",
+              location: "Seattle, WA",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
             {
               id: 4,
-              title: "Cloud Shepherd",
-              artist: "Sky Computing Co",
+              title: "Sky Computing Co",
+              artist: "Cloud Shepherd",
               album: "Weather Controller",
               duration: "10:20",
               dateRange: "Apr 2022 - Aug 2022",
+              location: "Denver, CO",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
             {
               id: 5,
-              title: "Data Archaeologist",
-              artist: "Ancient Bytes Museum",
+              title: "Ancient Bytes Museum",
+              artist: "Data Archaeologist",
               album: "Digital Explorer",
               duration: "5:15",
               dateRange: "Nov 2021 - Feb 2022",
+              location: "Boston, MA",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
             {
               id: 6,
-              title: "Bug Exterminator",
-              artist: "Pest Control Systems",
+              title: "Pest Control Systems",
+              artist: "Bug Exterminator",
               album: "Code Cleaner",
               duration: "7:30",
               dateRange: "Jul 2021 - Oct 2021",
+              location: "Portland, OR",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
             {
               id: 7,
-              title: "Pixel Artist",
-              artist: "Digital Canvas Studio",
+              title: "Digital Canvas Studio",
+              artist: "Pixel Artist",
               album: "Visual Magician",
               duration: "4:45",
               dateRange: "Mar 2021 - Jun 2021",
+              location: "Los Angeles, CA",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
             {
               id: 8,
-              title: "Database Librarian",
-              artist: "Information Palace",
+              title: "Information Palace",
+              artist: "Database Librarian",
               album: "Data Keeper",
               duration: "9:15",
               dateRange: "Oct 2020 - Feb 2021",
+              location: "Chicago, IL",
               explicit: true,
               image: "/placeholder.svg?height=40&width=40",
             },
             {
               id: 9,
-              title: "Code Poet",
-              artist: "Literary Programming Inc",
+              title: "Literary Programming Inc",
+              artist: "Code Poet",
               album: "Syntax Songwriter",
               duration: "3:40",
               dateRange: "May 2020 - Sep 2020",
+              location: "New York, NY",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
             {
               id: 10,
-              title: "Digital Janitor",
-              artist: "Clean Code Custodial",
+              title: "Clean Code Custodial",
+              artist: "Digital Janitor",
               album: "Maintenance Master",
               duration: "6:20",
               dateRange: "Jan 2020 - Apr 2020",
+              location: "Miami, FL",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
@@ -280,7 +279,27 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
   const playlist = getPlaylistData(playlistId)
   const [expandedTracks, setExpandedTracks] = useState<Set<number>>(new Set())
   const [playingTracks, setPlayingTracks] = useState<Set<number>>(new Set())
-  const [sortState, setSortState] = useState<"none" | "asc" | "desc">("none")
+  const [sortState, setSortState] = useState<"asc" | "desc">("asc") // Default to "asc" (down arrow)
+
+  // Open first track by default
+  useEffect(() => {
+    if (playlist.tracks.length > 0) {
+      const firstTrackId = playlist.tracks[0].id
+      // Only set if not already set to avoid infinite loop
+      setExpandedTracks((prevExpanded) => {
+        if (prevExpanded.size === 0) {
+          return new Set([firstTrackId])
+        }
+        return prevExpanded
+      })
+      setPlayingTracks((prevPlaying) => {
+        if (prevPlaying.size === 0) {
+          return new Set([firstTrackId])
+        }
+        return prevPlaying
+      })
+    }
+  }, [playlist.id]) // Only run when playlist ID changes
 
   const toggleTrackDetails = (trackId: number) => {
     const newExpanded = new Set<number>()
@@ -300,19 +319,11 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
   }
 
   const handleSortClick = () => {
-    if (sortState === "none") {
-      setSortState("asc")
-    } else if (sortState === "asc") {
-      setSortState("desc")
-    } else {
-      setSortState("none")
-    }
+    setSortState(sortState === "asc" ? "desc" : "asc")
   }
 
   const getSortedTracks = () => {
-    if (sortState === "none") {
-      return playlist.tracks
-    } else if (sortState === "asc") {
+    if (sortState === "asc") {
       return [...playlist.tracks]
     } else {
       return [...playlist.tracks].reverse()
@@ -500,6 +511,192 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
 
   const sortedTracks = getSortedTracks()
 
+  // Get grid layout based on playlist type
+  const getGridLayout = () => {
+    switch (playlistId) {
+      case "1": // About - remove role and clock columns
+        return {
+          header: (
+            <>
+              <div className="col-span-1"></div>
+              <div className="col-span-11">Organization</div>
+            </>
+          ),
+          row: (track: any) => (
+            <>
+              <div className="col-span-1 flex items-center justify-center">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    toggleTrackDetails(track.id)
+                  }}
+                  className="text-gray-400 hover:text-white transition-colors flex items-center justify-center"
+                >
+                  {playingTracks.has(track.id) ? (
+                    <div className="w-4 h-4 flex items-center justify-center">
+                      <div className="w-1 h-3 bg-green-500 mr-0.5"></div>
+                      <div className="w-1 h-3 bg-green-500"></div>
+                    </div>
+                  ) : (
+                    <Play className="h-4 w-4 fill-current" />
+                  )}
+                </button>
+              </div>
+
+              <div className="col-span-11 flex items-center gap-3">
+                <Image
+                  src={track.image || "/placeholder.svg"}
+                  alt={track.title}
+                  width={40}
+                  height={40}
+                  className="rounded"
+                />
+                <div>
+                  <div className={`font-medium ${playingTracks.has(track.id) ? "text-green-500" : "text-white"}`}>
+                    {track.title}
+                  </div>
+                </div>
+              </div>
+            </>
+          ),
+        }
+      case "2": // Experience - remove role column, swap clock and location (clock on right edge)
+        return {
+          header: (
+            <>
+              <div className="col-span-1"></div>
+              <div className="col-span-6">Organization</div>
+              <div className="col-span-2">Location</div>
+              <div className="col-span-3 flex items-center justify-center">
+                <button
+                  onClick={handleSortClick}
+                  className="flex items-center gap-1 hover:text-white transition-colors"
+                >
+                  <Clock className="h-4 w-4" />
+                  {sortState === "asc" && <ChevronDown className="h-3 w-3 text-green-500" />}
+                  {sortState === "desc" && <ChevronUp className="h-3 w-3 text-green-500" />}
+                </button>
+              </div>
+            </>
+          ),
+          row: (track: any) => (
+            <>
+              <div className="col-span-1 flex items-center justify-center">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    toggleTrackDetails(track.id)
+                  }}
+                  className="text-gray-400 hover:text-white transition-colors flex items-center justify-center"
+                >
+                  {playingTracks.has(track.id) ? (
+                    <div className="w-4 h-4 flex items-center justify-center">
+                      <div className="w-1 h-3 bg-green-500 mr-0.5"></div>
+                      <div className="w-1 h-3 bg-green-500"></div>
+                    </div>
+                  ) : (
+                    <Play className="h-4 w-4 fill-current" />
+                  )}
+                </button>
+              </div>
+
+              <div className="col-span-6 flex items-center gap-3">
+                <Image
+                  src={track.image || "/placeholder.svg"}
+                  alt={track.title}
+                  width={40}
+                  height={40}
+                  className="rounded"
+                />
+                <div>
+                  <div className={`font-medium ${playingTracks.has(track.id) ? "text-green-500" : "text-white"}`}>
+                    {track.title}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-span-2 text-gray-400 flex items-center">
+                <div className="text-sm whitespace-nowrap overflow-hidden text-ellipsis">{(track as any).location}</div>
+              </div>
+
+              <div className="col-span-3 text-gray-400 flex items-center justify-center">
+                <div className="text-sm whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                  {track.dateRange}
+                </div>
+              </div>
+            </>
+          ),
+        }
+      default: // Projects and others - keep original layout
+        return {
+          header: (
+            <>
+              <div className="col-span-1"></div>
+              <div className="col-span-4">Organization</div>
+              <div className="col-span-2">Role</div>
+              <div className="col-span-5 flex items-center justify-center">
+                <button
+                  onClick={handleSortClick}
+                  className="flex items-center gap-1 hover:text-white transition-colors"
+                >
+                  <Clock className="h-4 w-4" />
+                  {sortState === "asc" && <ChevronDown className="h-3 w-3 text-green-500" />}
+                  {sortState === "desc" && <ChevronUp className="h-3 w-3 text-green-500" />}
+                </button>
+              </div>
+            </>
+          ),
+          row: (track: any) => (
+            <>
+              <div className="col-span-1 flex items-center justify-center">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    toggleTrackDetails(track.id)
+                  }}
+                  className="text-gray-400 hover:text-white transition-colors flex items-center justify-center"
+                >
+                  {playingTracks.has(track.id) ? (
+                    <div className="w-4 h-4 flex items-center justify-center">
+                      <div className="w-1 h-3 bg-green-500 mr-0.5"></div>
+                      <div className="w-1 h-3 bg-green-500"></div>
+                    </div>
+                  ) : (
+                    <Play className="h-4 w-4 fill-current" />
+                  )}
+                </button>
+              </div>
+
+              <div className="col-span-4 flex items-center gap-3">
+                <Image
+                  src={track.image || "/placeholder.svg"}
+                  alt={track.title}
+                  width={40}
+                  height={40}
+                  className="rounded"
+                />
+                <div>
+                  <div className={`font-medium ${playingTracks.has(track.id) ? "text-green-500" : "text-white"}`}>
+                    {track.title}
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-span-2 text-gray-400 flex items-center">{track.album}</div>
+
+              <div className="col-span-5 text-gray-400 flex items-center justify-center">
+                <div className="text-sm whitespace-nowrap overflow-hidden text-ellipsis text-center">
+                  {track.dateRange}
+                </div>
+              </div>
+            </>
+          ),
+        }
+    }
+  }
+
+  const gridLayout = getGridLayout()
+
   return (
     <div className="h-screen overflow-hidden text-white relative">
       {/* Gradient Background */}
@@ -574,30 +771,11 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               <MoreHorizontal className="h-6 w-6" />
             </Button>
           </div>
-
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white">
-              <Search className="h-5 w-5" />
-            </Button>
-            <span className="text-gray-300 text-sm">Custom order</span>
-            <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white">
-              <MoreHorizontal className="h-5 w-5" />
-            </Button>
-          </div>
         </div>
 
         {/* Track List Header */}
         <div className="grid grid-cols-12 gap-4 px-4 py-2 text-sm text-gray-400 border-b border-gray-700 mb-4">
-          <div className="col-span-1"></div>
-          <div className="col-span-4">Title</div>
-          <div className="col-span-3">Role</div>
-          <div className="col-span-4 flex items-center">
-            <button onClick={handleSortClick} className="flex items-center gap-1 hover:text-white transition-colors">
-              <Clock className="h-4 w-4" />
-              {sortState === "asc" && <ChevronDown className="h-3 w-3 text-green-500" />}
-              {sortState === "desc" && <ChevronUp className="h-3 w-3 text-green-500" />}
-            </button>
-          </div>
+          {gridLayout.header}
         </div>
 
         {/* Track List */}
@@ -605,51 +783,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
           {sortedTracks.map((track, index) => (
             <div key={track.id} className="rounded-md overflow-hidden">
               <div className="grid grid-cols-12 gap-4 px-4 py-2 hover:bg-white/10 group cursor-pointer">
-                <div className="col-span-1 flex items-center justify-center">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      toggleTrackDetails(track.id)
-                    }}
-                    className="text-gray-400 hover:text-white transition-colors flex items-center justify-center"
-                  >
-                    {playingTracks.has(track.id) ? (
-                      <div className="w-4 h-4 flex items-center justify-center">
-                        <div className="w-1 h-3 bg-green-500 mr-0.5"></div>
-                        <div className="w-1 h-3 bg-green-500"></div>
-                      </div>
-                    ) : (
-                      <Play className="h-4 w-4 fill-current" />
-                    )}
-                  </button>
-                </div>
-
-                <div className="col-span-4 flex items-center gap-3">
-                  <Image
-                    src={track.image || "/placeholder.svg"}
-                    alt={track.title}
-                    width={40}
-                    height={40}
-                    className="rounded"
-                  />
-                  <div>
-                    <div className={`font-medium ${playingTracks.has(track.id) ? "text-green-500" : "text-white"}`}>
-                      {track.title}
-                    </div>
-                    <div className="text-sm text-gray-400 flex items-center gap-1">
-                      {track.explicit && (
-                        <span className="bg-gray-600 text-xs px-1 rounded text-white font-bold">E</span>
-                      )}
-                      {track.artist}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="col-span-3 text-gray-400 flex items-center">{track.album}</div>
-
-                <div className="col-span-4 text-gray-400 flex items-center">
-                  <div className="text-sm whitespace-nowrap overflow-hidden text-ellipsis">{track.dateRange}</div>
-                </div>
+                {gridLayout.row(track)}
               </div>
 
               {/* Accordion Details Section */}
