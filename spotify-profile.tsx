@@ -30,15 +30,11 @@ export default function Component() {
 
   return (
     <div className="h-screen overflow-hidden text-white relative">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-600 via-purple-700 to-purple-800"></div>
-
-      {/* Fade to Black Overlay */}
+      {/* Fixed Dark Purple to Black Gradient - Does not scroll */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black"
+        className="fixed inset-0"
         style={{
-          background:
-            "linear-gradient(to bottom, transparent 0%, transparent 60%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.7) 80%, black 100%)",
+          background: "linear-gradient(to bottom, #4c1d95 0%, #581c87 20%, #6b21a8 40%, #000000 65%)",
         }}
       ></div>
 
@@ -63,7 +59,7 @@ export default function Component() {
             <p className="text-sm font-medium mb-2">Profile</p>
             <h1 className="text-7xl font-black mb-6 tracking-tight">Brian Sen</h1>
             <p className="text-sm text-gray-300">
-              3 Public Playlists • <span className="text-white">Computer Science @ UC Santa Barbara</span>
+              <span className="text-white">Computer Science + Data Science @ UC Santa Barbara</span>
             </p>
           </div>
         </div>
