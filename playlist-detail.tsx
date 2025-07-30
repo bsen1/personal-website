@@ -589,12 +589,12 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
 
   return (
     <div className="h-screen overflow-hidden text-white relative">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-orange-900 via-red-900 to-red-800"></div>
+      {/* Gradient Background - Fixed */}
+      <div className="fixed inset-0 bg-gradient-to-b from-orange-900 via-red-900 to-red-800"></div>
 
-      {/* Fade to Black Overlay */}
+      {/* Fade to Black Overlay - Fixed */}
       <div
-        className="absolute inset-0"
+        className="fixed inset-0"
         style={{
           background:
             "linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.7) 70%, black 85%)",
@@ -630,7 +630,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
                   alt="Brian Sen profile"
                   width={48}
                   height={48}
-                  className="object-cover scale-150"
+                  className="object-cover scale-200"
                   style={{
                     objectPosition: "center 10%",
                     transformOrigin: "center center",
