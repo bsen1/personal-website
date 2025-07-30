@@ -17,14 +17,14 @@ export default function Component() {
       title: "Experience",
       author: "Brian Sen",
       image: "/placeholder.svg?height=200&width=200",
-      songCount: 10,
+      songCount: 3,
     },
     {
       id: 3,
       title: "Projects",
       author: "Brian Sen",
       image: "/placeholder.svg?height=200&width=200",
-      songCount: 6,
+      songCount: 3,
     },
   ]
 
@@ -45,20 +45,26 @@ export default function Component() {
       <div className="relative z-10 h-full overflow-y-auto px-8 pt-8 pb-6">
         {/* Profile Header */}
         <div className="flex items-end gap-6 mb-8">
-          <div className="relative">
+          <div className="relative w-[200px] h-[200px] rounded-full overflow-hidden shadow-2xl">
             <Image
-              src="/placeholder.svg?height=200&width=200"
-              alt="Profile picture"
-              width={200}
-              height={200}
-              className="rounded-full shadow-2xl"
+              src="/images/profile-photo.jpg"
+              alt="Brian Sen profile picture"
+              width={400}
+              height={400}
+              className="object-cover scale-150"
+              style={{
+                objectPosition: "center 10%",
+                transformOrigin: "center center",
+              }}
             />
           </div>
 
           <div className="flex-1">
             <p className="text-sm font-medium mb-2">Profile</p>
             <h1 className="text-7xl font-black mb-6 tracking-tight">Brian Sen</h1>
-            <p className="text-sm text-gray-300">3 Public Playlists • 25 Followers • 129 Following</p>
+            <p className="text-sm text-gray-300">
+              3 Public Playlists • <span className="text-white">Computer Science @ UC Santa Barbara</span>
+            </p>
           </div>
         </div>
 
