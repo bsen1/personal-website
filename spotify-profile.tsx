@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Linkedin, Github, Music } from "lucide-react"
+import { Linkedin, Github, Music, AudioLines, Headphones, Music4 } from "lucide-react"
 import Link from "next/link"
 
 export default function Component() {
@@ -34,7 +34,7 @@ export default function Component() {
       <div
         className="fixed inset-0"
         style={{
-          background: "linear-gradient(to bottom, #4c1d95 0%, #581c87 20%, #6b21a8 40%, #000000 65%)",
+          background: "linear-gradient(to bottom, #4c1d95 0%, #581c87 15%, #6b21a8 30%, #000000 37%)",
         }}
       ></div>
 
@@ -66,30 +66,58 @@ export default function Component() {
 
         {/* Action Buttons */}
         <div className="flex items-center gap-4 mb-8">
-          <span className="text-white font-medium text-lg border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full px-6 py-2 cursor-pointer">
-            Connect
-          </span>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-gray-400 hover:text-white border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full h-12 w-12"
+          <a
+            href="https://www.linkedin.com/in/briansen/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
           >
-            <Linkedin className="h-6 w-6" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-gray-400 hover:text-white border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full h-12 w-12"
+            <span className="text-white font-medium text-lg border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full px-6 py-2 cursor-pointer">
+              Connect
+            </span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/briansen/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
           >
-            <Github className="h-6 w-6" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-gray-400 hover:text-white border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full h-12 w-12"
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-400 hover:text-white border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full h-12 w-12"
+            >
+              <Linkedin className="h-6 w-6" />
+            </Button>
+          </a>
+          <a
+            href="https://github.com/bsen1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
           >
-            <Music className="h-6 w-6" />
-          </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-400 hover:text-white border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full h-12 w-12"
+            >
+              <Github className="h-6 w-6" />
+            </Button>
+          </a>
+          <a
+            href="https://open.spotify.com/user/briansen142?si=4325e69ad248416a"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
+          >
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-gray-400 hover:text-white border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full h-12 w-12"
+            >
+              <Music className="h-6 w-6" />
+            </Button>
+          </a>
         </div>
 
         {/* Public Playlists Section */}
