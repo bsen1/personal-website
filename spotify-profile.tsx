@@ -10,7 +10,7 @@ export default function Component() {
       title: "About Me",
       author: "Brian Sen",
       image: "/images/aboutme_cover.jpg",
-      songCount: 5,
+      songCount: 4,
     },
     {
       id: 2,

@@ -42,6 +42,26 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
+            {
+              id: 3,
+              title: "Skills and Career Focus",
+              artist: "Languages, Tools, Interests",
+              album: "Software Engineer",
+              duration: "2:45",
+              dateRange: "Multiple Languages",
+              explicit: false,
+              image: "/placeholder.svg?height=40&width=40",
+            },
+            {
+              id: 4,
+              title: "Contact Information",
+              artist: "San Francisco, CA",
+              album: "Available for Opportunities",
+              duration: "3:15",
+              dateRange: "(415) 794-2214",
+              explicit: false,
+              image: "/placeholder.svg?height=40&width=40",
+            },
           ],
         }
       case "2":
@@ -86,6 +106,17 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
+            {
+              id: 4,
+              title: "Each1Teach1",
+              artist: "Youth Coding Instructor",
+              album: "Education Technology",
+              duration: "4:00",
+              dateRange: "June 2023 - Sep 2023",
+              location: "San Francisco, CA",
+              explicit: false,
+              image: "/placeholder.svg?height=40&width=40",
+            },
           ],
         }
       case "3":
@@ -103,7 +134,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               artist: "React, Node, Express, AWS, REST API, TailwindCSS",
               album: "AI-Powered Email Tool",
               duration: "15:30",
-              dateRange: "Mar 2025",
+              dateRange: "March 2025",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
@@ -113,9 +144,9 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               artist: "React Native, Firebase, Expo Go, Git",
               album: "Mobile Application",
               duration: "8:45",
-              dateRange: "Jan 2025",
+              dateRange: "January 2025",
               explicit: false,
-              image: "/placeholder.svg?header=40&width=40",
+              image: "/placeholder.svg?height=40&width=40",
             },
             {
               id: 3,
@@ -124,6 +155,26 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               album: "Web Application",
               duration: "20:15",
               dateRange: "Summer 2024",
+              explicit: false,
+              image: "/placeholder.svg?height=40&width=40",
+            },
+            {
+              id: 4,
+              title: "AnimeWiki",
+              artist: "React.js, Jikan REST API, React Router",
+              album: "Web Application",
+              duration: "12:30",
+              dateRange: "January 2024",
+              explicit: false,
+              image: "/placeholder.svg?height=40&width=40",
+            },
+            {
+              id: 5,
+              title: "ThreeWords",
+              artist: "HTML, CSS, Javascript",
+              album: "Word Puzzle Game",
+              duration: "6:15",
+              dateRange: "January 2022",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
@@ -195,6 +246,41 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               "Achieved Dean's Honor List every quarter (6x Consecutive)",
               "Awarded Promise Scholar Recognition",
             ]
+          case 3:
+            return [
+              "Languages: Python, Java, C++, Go (Golang), Javascript, SQL, R",
+              "Frameworks: React, SwiftUI, Node, Flask, PyTorch, Express, Java Spring Boot",
+              "Tools: Git, Docker, AWS EC2 & S3, Jenkins, Jira, Firebase, Maven, Postman, MongoDB, PostgresQL",
+              "Interests: Backend and Fullstack Development, Software Engineering, Machine Learning, Infrastructure Engineering, Automation with Artificial Intelligence",
+            ]
+          case 4:
+            return [
+              "Based in San Francisco, CA",
+              "Email: briansen142@gmail.com",
+              <span key="linkedin">
+                LinkedIn:{" "}
+                <a
+                  href="https://linkedin.com/in/briansen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 underline"
+                >
+                  linkedin.com/in/briansen
+                </a>
+              </span>,
+              <span key="github">
+                GitHub:{" "}
+                <a
+                  href="https://github.com/bsen1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 underline"
+                >
+                  github.com/bsen1
+                </a>
+              </span>,
+              "Always open to connect and have interesting chats, just send a message!",
+            ]
           default:
             return ["No additional details available"]
         }
@@ -223,6 +309,14 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
             "Identified vulnerabilities in existing watermarking approaches",
             "Contributing to cutting-edge research in AI security and authenticity verification",
             "Collaborating with Dr. Prabhanjan Ananth on theoretical and practical implementations",
+          ],
+          4: [
+            "Mentored 40+ youth aged 12-16 in project development and coding fundamentals using Scratch, Python, and JavaScript",
+            "Resulted in 50+ individual projects completed by students",
+            "Facilitated 15 projects presented at local coding showcases",
+            "Developed curriculum and teaching materials for beginner programming concepts",
+            "Fostered collaborative learning environment and encouraged creative problem-solving",
+            "Provided one-on-one mentorship to help students overcome coding challenges",
           ],
         }
         return experienceDetails[trackId] || ["No additional details available"]
@@ -254,6 +348,24 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               "Leveraged Firebase for OAuth Secure Login supporting 30+ users",
               "Personalized puzzle data tracking for 75+ different games",
               "Clean, intuitive interface designed for daily use and habit tracking",
+            ]
+          case 4:
+            return [
+              "Integrated the Jikan REST API to fetch and display anime details of over 30,000 anime titles and descriptions",
+              "Utilized React Router, React.js, Javascript, HTML, and CSS to design an anime info and display website",
+              "Followed UI/UX principles to improve navigation efficiency",
+              "Enhanced user experience by implementing lazy loading for images",
+              "Resulted in a 40% decrease in page load time through optimization",
+              "Comprehensive database of anime information with search and filtering capabilities",
+            ]
+          case 5:
+            return [
+              "Original Word Puzzle Game made with CSS, HTML, and Javascript",
+              "Link sharing system between players to compete against each other",
+              "Intuitive and seamless interface design",
+              "Custom game logic and scoring system",
+              "Responsive design for cross-platform compatibility",
+              "Interactive gameplay with real-time feedback and animations",
             ]
           default:
             return ["No additional details available"]
@@ -373,7 +485,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
 
               <div className="col-span-2 text-white flex items-center pr-4">{track.artist}</div>
 
-              <div className="col-span-2 text-gray-400 flex items-center pl-4">
+              <div className="col-span-2 text-gray-400 flex items-center pr-4">
                 <div className="text-sm whitespace-nowrap overflow-hidden text-ellipsis">{(track as any).location}</div>
               </div>
 
