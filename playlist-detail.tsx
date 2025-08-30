@@ -2,9 +2,8 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Play, Shuffle, Plus, Download, MoreHorizontal, Clock, ArrowLeft, ChevronDown, ChevronUp } from "lucide-react"
-import { useState, useEffect } from "react"
+import { Play, Clock, ArrowLeft, ChevronDown, ChevronUp } from "lucide-react"
+import { useState } from "react"
 
 interface PlaylistDetailProps {
   playlistId: string
@@ -17,10 +16,11 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
       case "1":
         return {
           id: id,
-          title: "About",
+          title: "About Me",
           author: "Brian Sen",
           type: "Public Playlist",
-          image: "/placeholder.svg?height=300&width=300",
+          image: "/images/aboutme_cover.jpg",
+          description: "Personal background, education, and core information.",
           tracks: [
             {
               id: 1,
@@ -28,47 +28,17 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               artist: "University of California - Santa Barbara",
               album: "Computer Science Student",
               duration: "4:00",
-              dateRange: "Expected June 2026",
+              dateRange: "Expected June 2027",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
             {
               id: 2,
-              title: "Academic Excellence",
-              artist: "Engineering Honors Program",
-              album: "Dean's List Scholar",
+              title: "Awards & Scholarships",
+              artist: "Academic Excellence",
+              album: "Engineering Honors Program",
               duration: "3:30",
-              dateRange: "GPA: 3.96",
-              explicit: false,
-              image: "/placeholder.svg?height=40&width=40",
-            },
-            {
-              id: 3,
-              title: "Technical Skills",
-              artist: "Full Stack Development",
-              album: "Software Engineer",
-              duration: "2:45",
-              dateRange: "Multiple Languages",
-              explicit: false,
-              image: "/placeholder.svg?height=40&width=40",
-            },
-            {
-              id: 4,
-              title: "Contact Information",
-              artist: "San Francisco, CA",
-              album: "Available for Opportunities",
-              duration: "3:15",
-              dateRange: "(415) 794-2214",
-              explicit: false,
-              image: "/placeholder.svg?height=40&width=40",
-            },
-            {
-              id: 5,
-              title: "Professional Focus",
-              artist: "Machine Learning & AI",
-              album: "Research & Development",
-              duration: "2:30",
-              dateRange: "Continuous Learning",
+              dateRange: "GPA: 3.95",
               explicit: false,
               image: "/placeholder.svg?height=40&width=40",
             },
@@ -80,7 +50,8 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
           title: "Experience",
           author: "Brian Sen",
           type: "Public Playlist",
-          image: "/placeholder.svg?height=300&width=300",
+          image: "/images/experience_cover.jpg",
+          description: "Professional work and research experience.",
           tracks: [
             {
               id: 1,
@@ -123,7 +94,8 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
           title: "Projects",
           author: "Brian Sen",
           type: "Public Playlist",
-          image: "/placeholder.svg?height=300&width=300",
+          image: "/images/projects_cover.jpg",
+          description: "Passion projects showcasing full-stack development and emerging technologies.",
           tracks: [
             {
               id: 1,
@@ -160,10 +132,11 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
       default:
         return {
           id: id,
-          title: "About",
+          title: "About Me",
           author: "Brian Sen",
           type: "Public Playlist",
-          image: "/placeholder.svg?height=300&width=300",
+          image: "/images/aboutme_cover.jpg",
+          description: "Personal background, education, and core information.",
           tracks: [],
         }
     }
@@ -173,26 +146,6 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
   const [expandedTracks, setExpandedTracks] = useState<Set<number>>(new Set())
   const [playingTracks, setPlayingTracks] = useState<Set<number>>(new Set())
   const [sortState, setSortState] = useState<"asc" | "desc">("asc") // Default to "asc" (down arrow)
-
-  // Open first track by default
-  useEffect(() => {
-    if (playlist.tracks.length > 0) {
-      const firstTrackId = playlist.tracks[0].id
-      // Only set if not already set to avoid infinite loop
-      setExpandedTracks((prevExpanded) => {
-        if (prevExpanded.size === 0) {
-          return new Set([firstTrackId])
-        }
-        return prevExpanded
-      })
-      setPlayingTracks((prevPlaying) => {
-        if (prevPlaying.size === 0) {
-          return new Set([firstTrackId])
-        }
-        return prevPlaying
-      })
-    }
-  }, [playlist.id]) // Only run when playlist ID changes
 
   const toggleTrackDetails = (trackId: number) => {
     const newExpanded = new Set<number>()
@@ -225,47 +178,22 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
 
   const getTrackDetails = (trackId: number, playlistId: string) => {
     switch (playlistId) {
-      case "1": // About
+      case "1": // About Me
         switch (trackId) {
           case 1:
             return [
-              "Bachelor of Science (BS), Computer Science at UC Santa Barbara",
-              "Expected Graduation: June 2026 with GPA: 3.96",
-              "Relevant Coursework: Data Structures and Algorithms, Application Programming, Machine Learning",
-              "Located in Santa Barbara, CA during studies",
-              "Strong foundation in computer science fundamentals and practical application",
+              "Double Major in the College of Engineering at UC Santa Barbara",
+              "Bachelor of Science (BS), Computer Science",
+              "Bachelor of Science (BS), Statistics & Data Science",
+              "Expected Graduation: June 2027",
+              "GPA: 3.95/4.00",
             ]
           case 2:
             return [
-              "Engineering Honors Program participant",
-              "Dean's List All Quarters (6x consecutive)",
-              "Promise Scholar recognition",
-              "Consistent academic excellence with 3.96 GPA",
-              "Demonstrated commitment to high-quality work and continuous improvement",
-            ]
-          case 3:
-            return [
-              "Languages: Python, C++, Go (Golang), JavaScript, TypeScript, Java, SQL, C, R, HTML, CSS",
-              "Frameworks: React.js, React Native, SwiftUI, Hugging Face, PyTorch, Express, Tailwind, Spring Boot, OpenTelemetry",
-              "Tools: Git, Docker, Firebase, Maven, Drupal, PowerBI, Node.js, AWS, Ogen, Expo, Hoppscotch, MongoDB, PostgreSQL",
-              "Full-stack development capabilities across multiple technology stacks",
-              "Experience with both frontend and backend technologies, databases, and cloud platforms",
-            ]
-          case 4:
-            return [
-              "Based in San Francisco, CA",
-              "Phone: (415) 794-2214",
-              "Email: briansen142@gmail.com",
-              "LinkedIn and GitHub profiles available",
-              "Open to software engineering opportunities and collaborations",
-            ]
-          case 5:
-            return [
-              "Specializing in Machine Learning and Artificial Intelligence",
-              "Research experience in Gen AI and LLM watermarking",
-              "Focus on practical applications of AI in real-world problems",
-              "Committed to continuous learning and staying current with technology trends",
-              "Passionate about creating efficient, scalable, and impactful software solutions",
+              "One of 30 Undergraduates admitted to the Early Research Scholars Program",
+              "Member of UCSB's Engineering Honors Program",
+              "Achieved Dean's Honor List every quarter (6x Consecutive)",
+              "Awarded Promise Scholar Recognition",
             ]
           default:
             return ["No additional details available"]
@@ -340,7 +268,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
   // Get grid layout based on playlist type
   const getGridLayout = () => {
     switch (playlistId) {
-      case "1": // About - remove role and clock columns
+      case "1": // About Me - remove role and clock columns
         return {
           header: (
             <>
@@ -622,7 +550,10 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
 
           <div className="flex-1">
             <p className="text-sm font-medium mb-2">{playlist.type}</p>
-            <h1 className="text-7xl font-black mb-6 tracking-tight">{playlist.title}</h1>
+            <h1 className="text-7xl font-black mb-4 tracking-tight">{playlist.title}</h1>
+            <p className="text-sm text-gray-300 mb-6 whitespace-nowrap overflow-hidden text-ellipsis max-w-2xl">
+              {playlist.description}
+            </p>
             <div className="flex items-center gap-2">
               <div className="w-[24px] h-[24px] rounded-full overflow-hidden">
                 <Image
@@ -642,30 +573,6 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               </Link>
               <span className="text-gray-300">• {playlist.tracks.length} songs</span>
             </div>
-          </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-4">
-            <Button
-              size="lg"
-              className="rounded-full bg-green-500 hover:bg-green-400 text-black font-semibold h-14 w-14 p-0"
-            >
-              <Play className="h-6 w-6 fill-current" />
-            </Button>
-            <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white h-10 w-10">
-              <Shuffle className="h-6 w-6" />
-            </Button>
-            <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white h-10 w-10">
-              <Plus className="h-6 w-6" />
-            </Button>
-            <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white h-10 w-10">
-              <Download className="h-6 w-6" />
-            </Button>
-            <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white h-10 w-10">
-              <MoreHorizontal className="h-6 w-6" />
-            </Button>
           </div>
         </div>
 

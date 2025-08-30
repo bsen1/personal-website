@@ -1,29 +1,29 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Linkedin, Github, Music, AudioLines, Headphones, Music4 } from "lucide-react"
+import { Linkedin, Github, Music } from "lucide-react"
 import Link from "next/link"
 
 export default function Component() {
   const playlists = [
     {
       id: 1,
-      title: "About",
+      title: "About Me",
       author: "Brian Sen",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "/images/aboutme_cover.jpg",
       songCount: 5,
     },
     {
       id: 2,
       title: "Experience",
       author: "Brian Sen",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "/images/experience_cover.jpg",
       songCount: 3,
     },
     {
       id: 3,
       title: "Projects",
       author: "Brian Sen",
-      image: "/placeholder.svg?height=200&width=200",
+      image: "/images/projects_cover.jpg",
       songCount: 3,
     },
   ]
@@ -90,12 +90,7 @@ export default function Component() {
               <Linkedin className="h-6 w-6" />
             </Button>
           </a>
-          <a
-            href="https://github.com/bsen1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block"
-          >
+          <a href="https://github.com/bsen1" target="_blank" rel="noopener noreferrer" className="inline-block">
             <Button
               variant="ghost"
               size="icon"
@@ -143,8 +138,13 @@ export default function Component() {
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <h3 className="font-semibold text-white mb-1 truncate">{playlist.title}</h3>
-                  <p className="text-sm text-gray-400 truncate">By {playlist.author}</p>
+                  <h3 className="font-semibold text-white mb-2 truncate">{playlist.title}</h3>
+                  <div className="text-sm text-gray-400 whitespace-nowrap overflow-hidden text-ellipsis">
+                    {playlist.id === 1 && "Personal background, education, and core information."}
+                    {playlist.id === 2 && "Professional work and research experience."}
+                    {playlist.id === 3 &&
+                      "Passion projects showcasing full-stack development and emerging technologies."}
+                  </div>
                 </Link>
               ))}
             </div>
