@@ -815,7 +815,20 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               {expandedTracks.has(track.id) && (
                 <div className="px-2 sm:px-4 pb-4 bg-white/5 border-t border-gray-700 animate-in slide-in-from-top-2 duration-300">
                   <div className="pt-4 text-sm text-gray-300">
-                    <h4 className="text-white font-medium mb-3">Details</h4>
+                    {playlistId === "3" ? (
+                      <h4 className="text-white font-medium mb-3">
+                        <a
+                          href={getProjectUrl(track.id)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline hover:text-green-400 transition-colors"
+                        >
+                          GitHub
+                        </a>
+                      </h4>
+                    ) : (
+                      <h4 className="text-white font-medium mb-3">Details</h4>
+                    )}
                     <ul className="space-y-2 list-disc list-inside">
                       {getTrackDetails(track.id, playlistId).map((detail, index) => (
                         <li key={index} className="break-words">
