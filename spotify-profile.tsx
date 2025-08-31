@@ -17,14 +17,14 @@ export default function Component() {
       title: "Experience",
       author: "Brian Sen",
       image: "/images/experience_cover.jpg",
-      songCount: 3,
+      songCount: 4,
     },
     {
       id: 3,
       title: "Projects",
       author: "Brian Sen",
       image: "/images/projects_cover.jpg",
-      songCount: 3,
+      songCount: 5,
     },
   ]
 
@@ -38,10 +38,10 @@ export default function Component() {
         }}
       ></div>
 
-      <div className="relative z-10 h-full overflow-y-auto px-8 pt-8 pb-6">
+      <div className="relative z-10 h-full overflow-y-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-6">
         {/* Profile Header */}
-        <div className="flex items-end gap-6 mb-8">
-          <div className="relative w-[200px] h-[200px] rounded-full overflow-hidden shadow-2xl">
+        <div className="flex flex-col sm:flex-row items-center sm:items-end gap-4 sm:gap-6 mb-6 sm:mb-8">
+          <div className="relative w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] rounded-full overflow-hidden shadow-2xl flex-shrink-0">
             <Image
               src="/images/profile-photo.jpg"
               alt="Brian Sen profile picture"
@@ -55,9 +55,9 @@ export default function Component() {
             />
           </div>
 
-          <div className="flex-1">
+          <div className="flex-1 text-center sm:text-left">
             <p className="text-sm font-medium mb-2">Profile</p>
-            <h1 className="text-7xl font-black mb-6 tracking-tight">Brian Sen</h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black mb-4 sm:mb-6 tracking-tight">Brian Sen</h1>
             <p className="text-sm text-gray-300">
               <span className="text-white">Computer Science + Data Science @ UC Santa Barbara</span>
             </p>
@@ -65,14 +65,14 @@ export default function Component() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex items-center justify-center sm:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8 flex-wrap">
           <a
             href="https://www.linkedin.com/in/briansen/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block"
           >
-            <span className="text-white font-medium text-lg border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full px-6 py-2 cursor-pointer">
+            <span className="text-white font-medium text-base sm:text-lg border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full px-4 sm:px-6 py-2 cursor-pointer">
               Connect
             </span>
           </a>
@@ -85,18 +85,18 @@ export default function Component() {
             <Button
               variant="ghost"
               size="icon"
-              className="text-gray-400 hover:text-white border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full h-12 w-12"
+              className="text-gray-400 hover:text-white border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full h-10 w-10 sm:h-12 sm:w-12"
             >
-              <Linkedin className="h-6 w-6" />
+              <Linkedin className="h-5 w-5 sm:h-6 sm:w-6" />
             </Button>
           </a>
           <a href="https://github.com/bsen1" target="_blank" rel="noopener noreferrer" className="inline-block">
             <Button
               variant="ghost"
               size="icon"
-              className="text-gray-400 hover:text-white border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full h-12 w-12"
+              className="text-gray-400 hover:text-white border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full h-10 w-10 sm:h-12 sm:w-12"
             >
-              <Github className="h-6 w-6" />
+              <Github className="h-5 w-5 sm:h-6 sm:w-6" />
             </Button>
           </a>
           <a
@@ -108,29 +108,29 @@ export default function Component() {
             <Button
               variant="ghost"
               size="icon"
-              className="text-gray-400 hover:text-white border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full h-12 w-12"
+              className="text-gray-400 hover:text-white border border-gray-600 hover:border-white hover:scale-110 transition-all duration-200 rounded-full h-10 w-10 sm:h-12 sm:w-12"
             >
-              <Music className="h-6 w-6" />
+              <Music className="h-5 w-5 sm:h-6 sm:w-6" />
             </Button>
           </a>
         </div>
 
         {/* Public Playlists Section */}
         <div className="mb-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold">Public Playlists</h2>
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold">Public Playlists</h2>
           </div>
 
-          {/* Playlists Grid - Capped width */}
-          <div className="max-w-4xl">
-            <div className="grid grid-cols-3 gap-6">
+          {/* Playlists Grid - Responsive */}
+          <div className="w-full max-w-5xl">
+            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-3 gap-3 sm:gap-4 xl:gap-6">
               {playlists.map((playlist) => (
                 <Link
                   key={playlist.id}
                   href={`/playlist/${playlist.id}`}
-                  className="group cursor-pointer bg-gray-800/20 hover:bg-gray-700/30 p-4 rounded-lg transition-colors block"
+                  className="group cursor-pointer bg-gray-800/20 hover:bg-gray-700/30 p-2 sm:p-3 xl:p-4 rounded-lg transition-colors block"
                 >
-                  <div className="aspect-square mb-4 relative overflow-hidden rounded-lg">
+                  <div className="aspect-square mb-2 sm:mb-3 xl:mb-4 relative overflow-hidden rounded-lg">
                     <Image
                       src={playlist.image || "/placeholder.svg"}
                       alt={playlist.title}
@@ -138,8 +138,10 @@ export default function Component() {
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <h3 className="font-semibold text-white mb-2 truncate">{playlist.title}</h3>
-                  <div className="text-sm text-gray-400 whitespace-nowrap overflow-hidden text-ellipsis">
+                  <h3 className="font-semibold text-white mb-2 truncate text-sm sm:text-base xl:text-lg">
+                    {playlist.title}
+                  </h3>
+                  <div className="text-xs sm:text-sm xl:text-sm text-gray-400 line-clamp-2 xl:line-clamp-3">
                     {playlist.id === 1 && "Personal background, education, and core information."}
                     {playlist.id === 2 && "Professional work and research experience."}
                     {playlist.id === 3 &&
