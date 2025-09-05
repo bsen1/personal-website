@@ -266,7 +266,6 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               "Double Major in the College of Engineering at UC Santa Barbara",
               "Bachelor of Science (BS), Computer Science",
               "Bachelor of Science (BS), Statistics & Data Science",
-              "Expected Graduation: June 2027",
               "GPA: 3.95/4.00",
             ]
           case 2:
