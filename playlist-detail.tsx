@@ -139,7 +139,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
             {
               id: 1,
               title: "YapMaps",
-              artist: "PyTorch, PostgreSQL, Python, OpenAI (GPT-5), MiniLM, Pandas",
+              artist: "Next.js, PostgreSQL, Supabase, GPT-5, K-means, MiniLM",
               album: "NLP-Powered Map Platform",
               duration: "18:20",
               dateRange: "October 2025",
@@ -219,7 +219,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
   const getProjectUrl = (trackId: number) => {
     switch (trackId) {
       case 1: // YapMaps
-        return "https://yapmaps.vercel.app/"
+        return "https://github.com/bsen1/team-sendy"
       case 2: // EasyReply
         return "https://easy-reply.vercel.app/"
       case 3: // HopIn
@@ -232,6 +232,15 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
         return "https://github.com/bsen1/threeWords"
       default:
         return "https://github.com/bsen1"
+    }
+  }
+
+  const getProjectDemoUrl = (trackId: number) => {
+    switch (trackId) {
+      case 1: // YapMaps
+        return "https://yapmaps.vercel.app/"
+      default:
+        return null
     }
   }
 
@@ -618,7 +627,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               {/* Mobile Layout */}
               <div className="col-span-11 sm:hidden flex items-center gap-3">
                 <a
-                  href={getProjectUrl(track.id)}
+                  href={getProjectDemoUrl(track.id) || getProjectUrl(track.id)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-shrink-0 hover:scale-105 transition-transform duration-200"
@@ -633,13 +642,13 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
                 </a>
                 <div className="min-w-0 flex-1">
                   <a
-                    href={getProjectUrl(track.id)}
+                    href={getProjectDemoUrl(track.id) || getProjectUrl(track.id)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:underline"
                   >
                     <div
-                      className={`font-medium ${playingTracks.has(track.id) ? "text-green-500" : "text-white"} truncate cursor-pointer hover:text-green-400 transition-colors`}
+                      className={`font-medium ${playingTracks.has(track.id) ? "text-green-500" : "text-white"} truncate cursor-pointer hover:text-green-400 transition-colors underline`}
                     >
                       {track.title}
                     </div>
@@ -652,7 +661,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               {/* Desktop Layout */}
               <div className="col-span-6 hidden sm:flex items-center gap-3">
                 <a
-                  href={getProjectUrl(track.id)}
+                  href={getProjectDemoUrl(track.id) || getProjectUrl(track.id)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-shrink-0 hover:scale-105 transition-transform duration-200"
@@ -667,13 +676,13 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
                 </a>
                 <div className="min-w-0 flex-1">
                   <a
-                    href={getProjectUrl(track.id)}
+                    href={getProjectDemoUrl(track.id) || getProjectUrl(track.id)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:underline"
                   >
                     <div
-                      className={`font-medium ${playingTracks.has(track.id) ? "text-green-500" : "text-white"} truncate cursor-pointer hover:text-green-400 transition-colors`}
+                      className={`font-medium ${playingTracks.has(track.id) ? "text-green-500" : "text-white"} truncate cursor-pointer hover:text-green-400 transition-colors underline`}
                     >
                       {track.title}
                     </div>
@@ -827,7 +836,10 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
         <div className="space-y-1">
           {sortedTracks.map((track, index) => (
             <div key={track.id} className="rounded-md overflow-hidden">
-              <div className="grid grid-cols-12 gap-2 sm:gap-4 px-2 sm:px-4 py-2 hover:bg-white/10 group cursor-pointer">
+              <div
+                className="grid grid-cols-12 gap-2 sm:gap-4 px-2 sm:px-4 py-2 hover:bg-white/10 group cursor-pointer"
+                onClick={() => toggleTrackDetails(track.id)}
+              >
                 {gridLayout.row(track)}
               </div>
 
