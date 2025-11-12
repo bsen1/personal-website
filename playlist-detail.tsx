@@ -221,7 +221,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
       case 1: // YapMaps
         return "https://github.com/bsen1/team-sendy"
       case 2: // EasyReply
-        return "https://easy-reply.vercel.app/"
+        return "https://github.com/bsen1/EasyReply"
       case 3: // HopIn
         return "https://github.com/jonathanzhang2027/HopIn"
       case 4: // PuzzleDiary
@@ -239,6 +239,16 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
     switch (trackId) {
       case 1: // YapMaps
         return "https://yapmaps.vercel.app/"
+      case 2: // EasyReply
+        return "https://easy-reply.vercel.app/"
+      case 3: // HopIn
+        return "https://devpost.com/software/hopin-6al0en?ref_content=my-projects-tab&ref_feature=my_projects"
+      case 4: // PuzzleDiary
+        return "https://puzzlediary.vercel.app/"
+      case 5: // AnimeWiki  
+        return "https://myanimewiki.netlify.app/"
+      case 6: // ThreeWords
+        return "https://threewords.netlify.app/"
       default:
         return null
     }
