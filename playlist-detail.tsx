@@ -83,7 +83,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               artist: "Software Engineer Intern",
               album: "Technology",
               duration: "12:00",
-              dateRange: "June 2025 - Present",
+              dateRange: "June 2025 - August 2025",
               location: "Richmond, VA",
               explicit: false,
               image:
@@ -107,7 +107,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               artist: "Gen AI Researcher",
               album: "Academic Research",
               duration: "6:45",
-              dateRange: "Sep 2024 - June 2025",
+              dateRange: "Sept 2024 - June 2025",
               location: "Santa Barbara, CA",
               explicit: false,
               image:
@@ -119,7 +119,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               artist: "Youth Coding Instructor",
               album: "Education Technology",
               duration: "4:00",
-              dateRange: "June 2023 - Sep 2023",
+              dateRange: "June 2023 - Sept 2023",
               location: "San Francisco, CA",
               explicit: false,
               image:
