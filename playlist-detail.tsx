@@ -139,7 +139,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
             {
               id: 1,
               title: "YapMaps",
-              artist: "Next.js, PostgreSQL, Supabase, GPT-5, K-means, MiniLM",
+              artist: "PyTorch, PostgreSQL, Python, OpenAI (GPT-5), MiniLM, Pandas",
               album: "NLP-Powered Map Platform",
               duration: "18:20",
               dateRange: "October 2025",
