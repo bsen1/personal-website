@@ -138,6 +138,16 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
           tracks: [
             {
               id: 1,
+              title: "YapMaps",
+              artist: "Next.js, PostgreSQL, Supabase, GPT-5, K-means, MiniLM",
+              album: "NLP-Powered Map Platform",
+              duration: "18:20",
+              dateRange: "October 2025",
+              explicit: false,
+              image: "/images/yapmaps-duck.png",
+            },
+            {
+              id: 2,
               title: "EasyReply",
               artist: "React, Node, Express, AWS, REST API, TailwindCSS",
               album: "AI-Powered Email Tool",
@@ -148,7 +158,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
                 "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gemini_Generated_Image_4z7ww54z7ww54z7w-MqeAU3ZOUF2xD4gEdOuoYDKekR9amb.png",
             },
             {
-              id: 2,
+              id: 3,
               title: "HopIn Ridesharing App",
               artist: "React Native, Firebase, Expo Go, Git",
               album: "Mobile Application",
@@ -159,7 +169,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
                 "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/HopIn_logo-PKeerufeL2sJ2J0FUTkDmqjzgKN7xo.png",
             },
             {
-              id: 3,
+              id: 4,
               title: "PuzzleDiary",
               artist: "React.js, Firebase, OAuth, Cloud Firestore",
               album: "Web Application",
@@ -170,7 +180,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
                 "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/puzzlediary_logo-removebg-preview-GMTUyJpYXGZUipaEYYqy9ckfMKSO5R.png",
             },
             {
-              id: 4,
+              id: 5,
               title: "AnimeWiki",
               artist: "React.js, Jikan REST API, React Router",
               album: "Web Application",
@@ -181,7 +191,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
                 "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/animewiki_logo-YnG0uCeR731HdanIbzbyc6y1b27HYn.png",
             },
             {
-              id: 5,
+              id: 6,
               title: "ThreeWords",
               artist: "HTML, CSS, Javascript",
               album: "Word Puzzle Game",
@@ -208,15 +218,17 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
 
   const getProjectUrl = (trackId: number) => {
     switch (trackId) {
-      case 1: // EasyReply
+      case 1: // YapMaps
+        return "https://yapmaps.vercel.app/"
+      case 2: // EasyReply
         return "https://easy-reply.vercel.app/"
-      case 2: // HopIn
+      case 3: // HopIn
         return "https://github.com/jonathanzhang2027/HopIn"
-      case 3: // PuzzleDiary
+      case 4: // PuzzleDiary
         return "https://github.com/bsen1/PuzzleDiary"
-      case 4: // AnimeWiki
+      case 5: // AnimeWiki
         return "https://github.com/bsen1/AnimeWiki"
-      case 5: // ThreeWords
+      case 6: // ThreeWords
         return "https://github.com/bsen1/threeWords"
       default:
         return "https://github.com/bsen1"
@@ -353,6 +365,15 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
         switch (trackId) {
           case 1:
             return [
+              "Real-time NLP-powered map visualizing trending topics across university communities",
+              "Embedded and analyzed 10,000+ Reddit posts using MiniLM sentence transformers",
+              "Leveraged GPT-5 to interpret optimized K-means clusters and generate engaging topic headlines",
+              "Cached 500+ AI-generated headlines in PostgreSQL for instant retrieval",
+              "Built with Next.js frontend backed by Supabase for seamless data management",
+              "Achieved <1s query latency with automated 2x/week data refresh for real-time insights",
+            ]
+          case 2:
+            return [
               "AI-powered tool to generate context-aware email responses in seconds",
               "Built with React frontend and Node.js/Express backend for API calls to various LLMs",
               "Extensive customization and fine-tuning options with engineered prompts",
@@ -360,7 +381,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               "Achieved 99% uptime with robust cloud infrastructure",
               "Streamlines email communication with intelligent, contextual response generation",
             ]
-          case 2:
+          case 3:
             return [
               "Real-time, cross-platform (Web/iOS) ridesharing app using React Native and Expo",
               "Dynamic ride request/confirmation system with integrated driver dashboard",
@@ -369,7 +390,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               "Boosted data management efficiency by 35% through Firebase integration",
               "Designed for university communities with focus on safety and convenience",
             ]
-          case 3:
+          case 4:
             return [
               "Digital diary application to track 100+ daily puzzle game activities",
               "Built with React.js, HTML, and CSS, optimized for mobile and desktop viewing",
@@ -378,7 +399,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               "Personalized puzzle data tracking for 75+ different games",
               "Clean, intuitive interface designed for daily use and habit tracking",
             ]
-          case 4:
+          case 5:
             return [
               "Integrated the Jikan REST API to fetch and display anime details of over 30,000 anime titles and descriptions",
               "Utilized React Router, React.js, Javascript, HTML, and CSS to design an anime info and display website",
@@ -387,7 +408,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
               "Resulted in a 40% decrease in page load time through optimization",
               "Comprehensive database of anime information with search and filtering capabilities",
             ]
-          case 5:
+          case 6:
             return [
               "Original Word Puzzle Game made with CSS, HTML, and Javascript",
               "Link sharing system between players to compete against each other",
