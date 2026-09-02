@@ -79,6 +79,17 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
           tracks: [
             {
               id: 1,
+              title: "Amazon Web Services (AWS)",
+              artist: "SDE Intern",
+              album: "Cloud Infrastructure",
+              duration: "15:30",
+              dateRange: "June 2026 - September 2026",
+              location: "Seattle, WA",
+              explicit: false,
+              image: "/images/amazon_web_services_logo.jpeg",
+            },
+            {
+              id: 2,
               title: "Capital One",
               artist: "Software Engineer Intern",
               album: "Technology",
@@ -90,7 +101,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
                 "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/capital_one_logo-jzGIztVS8KiBrjHcdT9xdXlk1uoLDK.jpeg",
             },
             {
-              id: 2,
+              id: 3,
               title: "UCSB Information Technology",
               artist: "IT Software Engineer",
               album: "University Technology",
@@ -102,7 +113,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
                 "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ucsblogo-Fjv6tjAhCEK3pSqUfocLLSvyZ69sT2.png",
             },
             {
-              id: 3,
+              id: 4,
               title: "UCSB College of Engineering",
               artist: "Gen AI Researcher",
               album: "Academic Research",
@@ -114,7 +125,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
                 "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/research_logo-iAjOBdxS5b3dLmpTi3Ut2Jgk5v1cjv.png",
             },
             {
-              id: 4,
+              id: 5,
               title: "Each1Teach1",
               artist: "Youth Coding Instructor",
               album: "Education Technology",
@@ -347,6 +358,14 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
       case "2": // Experience
         const experienceDetails: { [key: number]: string[] } = {
           1: [
+            "Enabled historical rendering and version comparison on 700K+ CI/CD Pipelines, introducing diff and edit-history infrastructure",
+            "Designed version-aware APIs for retrieval and diff computation in Java and Kotlin",
+            "Modeled API contracts with Smithy and XML",
+            "Engineered an API-driven React/TypeScript Pipeline History interface with version navigation and change highlighting",
+            "Shipped changes across 8 repositories and led 3 architecture reviews",
+            "Validated changes with Jest, JUnit5, and end-to-end testing",
+          ],
+          2: [
             "Unified USPS barcode generation across 4 high-traffic services by migrating to enterprise API",
             "Saved 20% in management costs through shared infrastructure and eliminated legacy architectures",
             "Delivered API Gateways with oTel tracing and Go middlewares for real-time logging and security",
@@ -354,7 +373,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
             "Composed test suites with 90%+ coverage and feature flags for seamless integration",
             "Authored comprehensive technical documentation in Java, Go, and Python",
           ],
-          2: [
+          3: [
             "Developed PyTorch NLP pipeline that auto-clustered 12,000+ IT chat transcripts into 15 support topics",
             "Achieved approximately 90% precision and deployed real-time dashboards",
             "Cut resolution times by 25% through data-driven insights and automation",
@@ -362,7 +381,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
             "Reduced audit times by 75% while achieving 0% error rate handling 2,000+ monthly requests",
             "Led development of 2 UCSB IT websites using HTML, CSS, and Drupal CMS",
           ],
-          3: [
+          4: [
             "Research focus on watermarking for Gen AI outputs (LLMs, Diffusion Models)",
             "Working on minimal detection errors, strong security guarantees, and adversarial robustness",
             "Implemented 5 distinct LLM Watermarking schemes using Hugging Face and PyTorch",
@@ -370,7 +389,7 @@ export default function PlaylistDetail({ playlistId }: PlaylistDetailProps) {
             "Contributing to cutting-edge research in AI security and authenticity verification",
             "Collaborating with Dr. Prabhanjan Ananth on theoretical and practical implementations",
           ],
-          4: [
+          5: [
             "Mentored 40+ youth aged 12-16 in project development and coding fundamentals using Scratch, Python, and JavaScript",
             "Resulted in 50+ individual projects completed by students",
             "Facilitated 15 projects presented at local coding showcases",

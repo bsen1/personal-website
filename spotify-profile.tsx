@@ -17,7 +17,7 @@ export default function Component() {
       title: "Experience",
       author: "Brian Sen",
       image: "/images/experience_cover.jpg",
-      songCount: 4,
+      songCount: 5,
     },
     {
       id: 3,
